@@ -29,21 +29,28 @@ namespace _26_Malygin_authorization
             {
                 string login = txtbLogin.Text;
                 string password = pswbPassword.Password;
-                var user = Helper.GetContext().Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
-                string role = Helper.GetContext().Roles.Where(x => x.roleID == user.roleID).FirstOrDefault().role;
+                var user = Helper.GetContext().Users.Where(x => x.Login == login).FirstOrDefault();
 
                 if (user != null)
                 {
-                    txtbMessage.Text = $"Добро пожаловать! Ваша роль: {role}";
+                    if (user.Password == password)
+                    {
+                        string role = Helper.GetContext().Roles.Where(x => x.roleID == user.roleID).FirstOrDefault().role;
+                        MessageBox.Show($"Добро пожаловать. Ваша роль: {role}.");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Неверный пароль.");
+                    }
                 }
-                else 
+                else
                 {
-                    txtbMessage.Text = "Неверно введены логин или пароль!";
+                    MessageBox.Show($"Пользователя с таким логином не существует.");
                 }
             }
             catch 
             {
-                txtbMessage.Text = "Неверно введены логин или пароль!";
+                MessageBox.Show("Непредвиденная ошибка.");
             }
         }
     }

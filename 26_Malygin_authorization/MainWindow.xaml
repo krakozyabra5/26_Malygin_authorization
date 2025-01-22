@@ -17,7 +17,6 @@
             <TextBox x:Name="txtbLogin"/>
             <TextBlock Text="Пароль:"/>
             <PasswordBox x:Name="pswbPassword"/>
-            <TextBox x:Name="txtbMessage" Margin="0, 20, 0, 0"/>
             <TextBlock HorizontalAlignment="Center" Visibility="Hidden" x:Name="txtBlockTimer"/>
             <StackPanel Orientation="Horizontal" Height="80" HorizontalAlignment="Center">
                 <Button x:Name="btnEnter" Margin="5, 15, 5, 5" Content="Войти" Click="btnEnter_Click" Width="130" Height="30"/>
